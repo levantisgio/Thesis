@@ -9,7 +9,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[LND.dataset01](
-	
 	[Timestamp] [text] NULL,
 	[Source_IP_Address] [text] NULL,
 	[Destination_IP_Address] [text] NULL,
