@@ -1,7 +1,7 @@
 USE [Thesis]
 GO
 
-/****** Object:  StoredProcedure [STG].[LND_TO_STG]    Script Date: 9/5/2024 3:48:45 πμ ******/
+/****** Object:  StoredProcedure [STG].[LND_TO_STG]    Script Date: 9/5/2024 5:10:53 μμ ******/
 SET ANSI_NULLS ON
 GO
 
@@ -31,8 +31,8 @@ BEGIN
                 SELECT COALESCE(MAX(create_date), '1900-01-01') AS cdate 
                 FROM [STG].[dataset01]
             )
-		OR create_date = '1900-01-01'
-    )
+		/*OR create_date = '1900-01-01'*/ --uncomment for initial data 
+		)
 
     INSERT INTO [STG].[dataset01](
         [key_column],
@@ -142,6 +142,3 @@ BEGIN
 	)                                                                                       AS continents*/;
 END;
 GO
-
-
-
