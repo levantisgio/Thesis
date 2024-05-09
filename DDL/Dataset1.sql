@@ -1,14 +1,14 @@
 USE [Thesis]
 GO
 
-/****** Object:  Table [dbo].[LND.dataset01]    Script Date: 30/4/2024 10:16:14 ï¿½ï¿½ ******/
+/****** Object:  Table [LND].[dataset01]    Script Date: 8/5/2024 5:35:44 ìì ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[LND.dataset01](
+CREATE TABLE [LND].[dataset01](
 	[Timestamp] [text] NULL,
 	[Source_IP_Address] [text] NULL,
 	[Destination_IP_Address] [text] NULL,

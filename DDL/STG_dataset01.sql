@@ -1,7 +1,7 @@
 USE [Thesis]
 GO
 
-/****** Object:  Table [STG].[dataset01]    Script Date: 1/5/2024 3:23:23 ðì ******/
+/****** Object:  Table [STG].[dataset01]    Script Date: 9/5/2024 4:02:25 Ï€Î¼ ******/
 SET ANSI_NULLS ON
 GO
 
@@ -11,6 +11,12 @@ GO
 CREATE TABLE [STG].[dataset01](
 	[key_column] [varchar](40) NOT NULL,
 	[timestamp] [datetime2](7) NOT NULL,
+	[create_date] [date] NOT NULL,
+	[year] [int] NOT NULL,
+	[month] [int] NOT NULL,
+	[month_name] [varchar](12) NOT NULL,
+	[day] [int] NOT NULL,
+	[day_name] [varchar](10) NOT NULL,
 	[source_ip] [varchar](15) NULL,
 	[destination_ip] [varchar](15) NULL,
 	[source_port] [int] NULL,
@@ -37,11 +43,11 @@ CREATE TABLE [STG].[dataset01](
 	[log_data] [varchar](255) NULL,
 	[alert_data] [varchar](255) NULL,
 	[device_type] [varchar](20) NULL,
+	/*[country] [varchar](60) NULL,
+	[continent] [varchar](60) NULL,*/
 PRIMARY KEY CLUSTERED 
 (
 	[key_column] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-
-
