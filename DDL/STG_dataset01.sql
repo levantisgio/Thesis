@@ -1,7 +1,7 @@
 USE [Thesis]
 GO
 
-/****** Object:  Table [STG].[dataset01]    Script Date: 9/5/2024 4:02:25 πμ ******/
+/****** Object:  Table [STG].[dataset01]    Script Date: 9/5/2024 5:08:14 μμ ******/
 SET ANSI_NULLS ON
 GO
 
@@ -43,8 +43,6 @@ CREATE TABLE [STG].[dataset01](
 	[log_data] [varchar](255) NULL,
 	[alert_data] [varchar](255) NULL,
 	[device_type] [varchar](20) NULL,
-	/*[country] [varchar](60) NULL,
-	[continent] [varchar](60) NULL,*/
 PRIMARY KEY CLUSTERED 
 (
 	[key_column] ASC
