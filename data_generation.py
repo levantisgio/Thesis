@@ -42,13 +42,13 @@ def generate_random_ip():
 #function to generate random data for each day
 def generate_new_data(existing_data, num_rows=500):
 
-    device_information_txt = 'C:\\Users\\glevantis\\OneDrive - REAL CONSULTING SA\\Επιφάνεια εργασίας\\Thesis-1\\Device_Information.txt'
+    device_information_txt = 'C:\\Users\\glevantis\\OneDrive - REAL CONSULTING SA\\Επιφάνεια εργασίας\\Thesis-1\\Lookup_files\\Device_Information.txt'
     device_information = read_device_information(device_information_txt)
 
-    locations_txt = 'C:\\Users\\glevantis\\OneDrive - REAL CONSULTING SA\\Επιφάνεια εργασίας\\Thesis-1\\Locations.txt'
+    locations_txt = 'C:\\Users\\glevantis\\OneDrive - REAL CONSULTING SA\\Επιφάνεια εργασίας\\Thesis-1\\Lookup_files\\Locations.txt'
     locations = read_device_information(locations_txt)
 
-    user_information_txt = 'C:\\Users\\glevantis\\OneDrive - REAL CONSULTING SA\\Επιφάνεια εργασίας\\Thesis-1\\User_Information.txt'
+    user_information_txt = 'C:\\Users\\glevantis\\OneDrive - REAL CONSULTING SA\\Επιφάνεια εργασίας\\Thesis-1\\Lookup_files\\User_Information.txt'
     user_information = read_user_information(user_information_txt)
 
     #copy existing data to preserve it
@@ -94,14 +94,22 @@ def generate_new_data(existing_data, num_rows=500):
 
 #function to create a new CSV file with the new data
 def create_new_csv_file(new_data):
-    today = datetime.now().strftime('%Y-%m-%d')
-    new_file_name = f"data1_{today}.csv"
+    today = datetime.now().strftime('%Y%m%d')
+    new_file_name = f"data_{today}.csv"
     new_data.to_csv(new_file_name, index=False)
     print(f"New CSV file '{new_file_name}' created with new data.")
 
+def create_new_csv_file(new_data):
+    file_path = 'C:\\Users\\glevantis\\OneDrive - REAL CONSULTING SA\\Επιφάνεια εργασίας\\Thesis-1\\Generated_data\\'
+    today = datetime.now().strftime('%Y%m%d')
+    new_file_name = f"{file_path}data_{today}.csv"
+    new_data.to_csv(new_file_name, index=False)
+    print(f"New CSV file '{new_file_name}' created with new data.")
+
+
 def main():
     # file paths to the existing CSV file and text files
-    file_path = 'C:\\Users\\glevantis\\OneDrive - REAL CONSULTING SA\\Επιφάνεια εργασίας\\Datasets\\Dataset 01\\cybersecurity_attacks.csv'
+    file_path = 'C:\\Users\\glevantis\\OneDrive - REAL CONSULTING SA\\Επιφάνεια εργασίας\\Thesis-1\\Datasets\\cybersecurity_attacks.csv'
 
     # read existing data from the CSV file
     existing_data = read_existing_data(file_path)
