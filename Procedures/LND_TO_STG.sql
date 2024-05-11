@@ -1,7 +1,7 @@
 USE [Thesis]
 GO
 
-/****** Object:  StoredProcedure [STG].[LND_TO_STG]    Script Date: 9/5/2024 5:10:53 μμ ******/
+/****** Object:  StoredProcedure [STG].[LND_TO_STG]    Script Date: 11/5/2024 4:00:42 πμ ******/
 SET ANSI_NULLS ON
 GO
 
@@ -64,13 +64,12 @@ BEGIN
         [browser],
         [os],
         [segment],
-        [location],
+        [from_location],
+		[to_location],
         [server_ip],
         [log_data],
         [alert_data],
-        [device_type]/*,
-		[country],
-		[continent]*/
+        [device_type]
     )
     
     SELECT 
@@ -121,24 +120,14 @@ BEGIN
             WHEN [Device_Information] LIKE '%Android%' THEN 'Android'
             ELSE 'Other'
         END                                                                                 AS [os],
-        CONVERT(VARCHAR(10),[Network_Segment])                                              AS [segment],
-        CONVERT(VARCHAR(50),[Geo_location_Data])                                            AS [location],
-        CONVERT(VARCHAR(15),[Proxy_Information])                                            AS [server_ip],
+        CONVERT(VARCHAR(10),[Network_Segment])                                              AS [segment], 
+        Replace(SUBSTRING(CONVERT(VARCHAR(50), Geo_location_Data), 1, CHARINDEX('.', CONVERT(VARCHAR(50), Geo_location_Data)) -1), '"', '') AS [from_location],
+	    Replace(SUBSTRING(CONVERT(VARCHAR(50), Geo_location_Data), CHARINDEX('.', CONVERT(VARCHAR(50), Geo_location_Data)) + 1, LEN(CONVERT(VARCHAR(50), Geo_location_Data)) - CHARINDEX('.', CONVERT(VARCHAR(50), Geo_location_Data))), '"', '') AS [to_location],
+		CONVERT(VARCHAR(15),[Proxy_Information])                                            AS [server_ip],
         CONVERT(VARCHAR(255),[Firewall_Logs])                                               AS [log_data],
         CONVERT(VARCHAR(255),[IDS_IPS_Alerts])                                              AS [alert_data],
-        CONVERT(VARCHAR(20),[Log_Source])                                                   AS [device_type]/*,
-		countries.[country_name]                                                            AS [country],
-	    continents.[continent_name]                                                         AS [continent]*/
+        CONVERT(VARCHAR(20),[Log_Source])                                                   AS [device_type]
 	FROM 
-	    filter_new_data_cte
-	/*CROSS JOIN (
-	    SELECT TOP 1 [country_name]
-	    FROM [Thesis].[dbo].[GeoLite2_Country_Locations_en] 
-        ORDER BY NEWID())                                                                   AS countries
-	CROSS JOIN (
-	    SELECT TOP 1 [continent_name]
-	    FROM [Thesis].[dbo].[GeoLite2_Country_Locations_en]
-	    ORDER BY NEWID()
-	)                                                                                       AS continents*/;
+	    filter_new_data_cte;
 END;
 GO

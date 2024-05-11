@@ -1,7 +1,7 @@
 USE [Thesis]
 GO
 
-/****** Object:  Table [TRG].[dataset01_ml]    Script Date: 9/5/2024 5:09:24 μμ ******/
+/****** Object:  Table [TRG].[dataset01_ml]    Script Date: 11/5/2024 3:59:30 πμ ******/
 SET ANSI_NULLS ON
 GO
 
@@ -38,7 +38,12 @@ CREATE TABLE [TRG].[dataset01_ml](
 	[browser] [varchar](100) NULL,
 	[os] [varchar](100) NULL,
 	[segment] [varchar](10) NULL,
-	[location] [varchar](50) NULL,
+	[from_location] [varchar](50) NULL,
+	[from_country] [varchar](50) NULL,
+	[from_continent] [varchar](50) NULL,
+	[to_location] [varchar](50) NULL,
+	[to_country] [varchar](50) NULL,
+	[to_continent] [varchar](50) NULL,
 	[server_ip] [varchar](15) NULL,
 	[log_data] [varchar](255) NULL,
 	[alert_data] [varchar](255) NULL,
