@@ -15,8 +15,8 @@ def preprocess_csv(input_file, output_file):
                 writer.writerow(row)
 
 # Example usage
-#input_file = 'C:\\Users\\glevantis\\OneDrive - REAL CONSULTING SA\\Επιφάνεια εργασίας\\Datasets\\Dataset 01\\cybersecurity_attacks.csv'
-input_file = 'C:\\Users\\glevantis\\OneDrive - REAL CONSULTING SA\\Επιφάνεια εργασίας\\Thesis-1\\data1_2024-05-08.csv'
-output_file = 'output1.csv'
+input_file = 'C:\\Users\\glevantis\\OneDrive - REAL CONSULTING SA\\Επιφάνεια εργασίας\\Datasets\\Dataset 01\\cybersecurity_attacks.csv'
+#input_file = 'C:\\Users\\glevantis\\OneDrive - REAL CONSULTING SA\\Επιφάνεια εργασίας\\Thesis-1\\data1_2024-05-08.csv'
+output_file = 'output.csv'
 preprocess_csv(input_file, output_file)
 print("CSV file preprocessed successfully.")

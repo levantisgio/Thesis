@@ -40,7 +40,8 @@ def generate_random_ip():
     return f"{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}"
 
 #function to generate random data for each day
-def generate_new_data(existing_data, num_rows=500):
+def generate_new_data(existing_data, min_rows=100, max_rows=210):
+    num_rows = random.randint(min_rows, max_rows)
 
     device_information_txt = 'C:\\Users\\glevantis\\OneDrive - REAL CONSULTING SA\\Επιφάνεια εργασίας\\Thesis-1\\Lookup_files\\Device_Information.txt'
     device_information = read_device_information(device_information_txt)
@@ -51,9 +52,34 @@ def generate_new_data(existing_data, num_rows=500):
     user_information_txt = 'C:\\Users\\glevantis\\OneDrive - REAL CONSULTING SA\\Επιφάνεια εργασίας\\Thesis-1\\Lookup_files\\User_Information.txt'
     user_information = read_user_information(user_information_txt)
 
+    # Define weights for 'Action Taken' column
+    action_taken_weights = {'Blocked': 5, 'Ignored': 3, 'Logged': 2}
+
+    # Define probabilities for 'Protocol' based on 'Traffic Type'
+    protocol_probabilities = {
+        'HTTP': {'TCP': 0.7, 'UDP': 0.2, 'ICMP': 0.1},
+        'DNS': {'UDP': 0.9, 'TCP': 0.05, 'ICMP': 0.05},
+        'FTP': {'TCP': 0.8, 'UDP': 0.1, 'ICMP': 0.1}
+    }
+
+    # Define probabilities for 'Attack Type' based on 'Traffic Type'
+    attack_type_probabilities = {
+        'HTTP': {'DDoS': 0.4, 'Intrusion': 0.3, 'Malware': 0.3},
+        'DNS': {'DDoS': 0.1, 'Intrusion': 0.5, 'Malware': 0.4},
+        'FTP': {'DDoS': 0.3, 'Intrusion': 0.4, 'Malware': 0.3}
+    }
+
+    # Define probabilities for 'Proxy Information' based on 'Traffic Type'
+    proxy_probabilities = {
+        'HTTP': 0.8,
+        'DNS': 0.2,
+        'FTP': 0.5
+    }
+
     #copy existing data to preserve it
     new_data = pd.DataFrame(columns=existing_data.columns)
     
+    # generate new rows for the specified number
     # generate new rows for the specified number
     for i in range(num_rows):
         # generate random timestamp for this row
@@ -66,7 +92,7 @@ def generate_new_data(existing_data, num_rows=500):
             'Destination IP Address': generate_random_ip(),
             'Source Port': random.randint(1024, 65535),
             'Destination Port': random.randint(1024, 65535),
-            'Protocol': random.choice(['TCP', 'UDP', 'ICMP']),
+            'Protocol': random.choices(list(protocol_probabilities['HTTP'].keys()), weights=protocol_probabilities['HTTP'].values())[0],
             'Packet Length': random.randint(64, 1500),
             'Packet Type': random.choice(['Data', 'Control']),
             'Traffic Type': random.choice(['HTTP', 'DNS', 'FTP']),
@@ -74,10 +100,10 @@ def generate_new_data(existing_data, num_rows=500):
             'Malware Indicators': 'IoC Detected' if random.random() < 0.5 else '',
             'Anomaly Scores': round(random.uniform(0, 99.99), 2),
             'Alerts/Warnings': 'Alert Triggered' if random.random() < 0.5 else '',
-            'Attack Type': random.choice(['DDoS', 'Intrusion', 'Malware']),
+            'Attack Type': random.choices(list(attack_type_probabilities['HTTP'].keys()), weights=attack_type_probabilities['HTTP'].values())[0],
             'Attack Signature': random.choice(['Known Pattern A', 'Known Pattern B']),
-            'Action Taken': random.choice(['Blocked', 'Ignored', 'Logged']),
-            'Severity Level': random.choice(['Low', 'Medium', 'High']),
+            'Action Taken': random.choices(list(action_taken_weights.keys()), weights=action_taken_weights.values())[0],
+            'Severity Level': 'High' if random.random() < 0.2 else random.choice(['Low', 'Medium']),  # 20% chance of High severity
             'User Information': random.choice(user_information),
             'Device Information': random.choice(device_information),
             'Network Segment': random.choice(['Segment A', 'Segment B', 'Segment C']),
@@ -87,18 +113,19 @@ def generate_new_data(existing_data, num_rows=500):
             'IDS/IPS Alerts': 'Alert Data' if random.random() < 0.5 else '',
             'Log Source': random.choice(['Server', 'Firewall'])
         }
-        #append the new row to the DataFrame
+        
+        # If severity level is 'High', apply the weights for 'Action Taken' and set anomaly score over 75.00
+        if new_row['Severity Level'] == 'High':
+            new_row['Action Taken'] = random.choices(list(action_taken_weights.keys()), weights=action_taken_weights.values())[0]
+            new_row['Anomaly Scores'] = round(random.uniform(75, 99.99), 2)  # Set anomaly score over 75.00
+        
+        # Append the new row to the DataFrame
         new_data = new_data.append(new_row, ignore_index=True)
+
     
     return new_data
 
 #function to create a new CSV file with the new data
-def create_new_csv_file(new_data):
-    today = datetime.now().strftime('%Y%m%d')
-    new_file_name = f"data_{today}.csv"
-    new_data.to_csv(new_file_name, index=False)
-    print(f"New CSV file '{new_file_name}' created with new data.")
-
 def create_new_csv_file(new_data):
     file_path = 'C:\\Users\\glevantis\\OneDrive - REAL CONSULTING SA\\Επιφάνεια εργασίας\\Thesis-1\\Generated_data\\'
     today = datetime.now().strftime('%Y%m%d')
@@ -114,8 +141,8 @@ def main():
     # read existing data from the CSV file
     existing_data = read_existing_data(file_path)
 
-    # generate 500 new rows of data
-    new_data = generate_new_data(existing_data, num_rows=500)
+    # generate random number of rows between 100 and 210
+    new_data = generate_new_data(existing_data, min_rows=100, max_rows=210)
 
     # create a new CSV file with the new data
     create_new_csv_file(new_data)
