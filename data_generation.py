@@ -40,7 +40,8 @@ def generate_random_ip():
     return f"{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}"
 
 #function to generate random data for each day
-def generate_new_data(existing_data, min_rows=100, max_rows=210):
+def generate_new_data(existing_data, min_rows=15, max_rows=50):
+    
     num_rows = random.randint(min_rows, max_rows)
 
     device_information_txt = 'C:\\Users\\glevantis\\OneDrive - REAL CONSULTING SA\\Επιφάνεια εργασίας\\Thesis-1\\Lookup_files\\Device_Information.txt'
@@ -142,7 +143,7 @@ def main():
     existing_data = read_existing_data(file_path)
 
     # generate random number of rows between 100 and 210
-    new_data = generate_new_data(existing_data, min_rows=100, max_rows=210)
+    new_data = generate_new_data(existing_data, min_rows=15, max_rows=50)
 
     # create a new CSV file with the new data
     create_new_csv_file(new_data)
