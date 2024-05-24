@@ -121,7 +121,9 @@ def generate_new_data(existing_data, min_rows=15, max_rows=50):
             new_row['Anomaly Scores'] = round(random.uniform(75, 99.99), 2)  # Set anomaly score over 75.00
         
         # Append the new row to the DataFrame
-        new_data = new_data.append(new_row, ignore_index=True)
+        
+        #new_data = new_data.append(new_row, ignore_index=True)
+        new_data = pd.concat([new_data, pd.DataFrame([new_row])], ignore_index=True)
 
     
     return new_data
