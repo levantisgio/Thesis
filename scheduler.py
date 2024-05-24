@@ -1,16 +1,21 @@
 import schedule
 import time
-import subprocess
+import data_generation
+import datetime
 
-# Define the command to execute your script
-script_command = "C:\\Users\\glevantis\\OneDrive - REAL CONSULTING SA\\Επιφάνεια εργασίας\\Thesis-1\\data_generation.py"
+def job():
+    print(f"{datetime.datetime.now()} - Running data generation task...")
+    try:
+        data_generation.main()
+        print(f"{datetime.datetime.now()} - Task completed successfully.")
+    except Exception as e:
+        print(f"{datetime.datetime.now()} - An error occurred: {e}")
 
+# Schedule the job every day at 00:01
+schedule.every().day.at('00:01').do(job)
 
-# Define the task to run your script
-def run_script():
-    print("Running script...")
-    subprocess.run(script_command, shell=True)
-    print("Script execution completed.")
+print(f"{datetime.datetime.now()} - Scheduler started. The script will run every day at 00:01.")
 
-# Schedule the task to run daily at 12:58 AM
-run_script()
+while True:
+    schedule.run_pending()
+    time.sleep(1)
