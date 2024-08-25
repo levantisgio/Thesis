@@ -1,0 +1,241 @@
+{
+    "type": "bundle",
+    "id": "bundle--428ae43e-e142-4c67-a5ba-dde76565a04e",
+    "objects": [
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--d848a00d-2ef8-4a2a-a98c-fd6785a7d1e4",
+            "created": "2024-08-24T15:10:19.096553Z",
+            "modified": "2024-08-24T15:10:19.096553Z",
+            "name": "Indicator for Intrusion",
+            "pattern": "[ipv4-addr:value = '154.100.150.171']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2021-08-13T00:00:00Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--ca591952-f20b-45f3-a13a-3961f1fe294a",
+            "created": "2024-08-24T15:10:19.096553Z",
+            "modified": "2024-08-24T15:10:19.096553Z",
+            "name": "Indicator for Intrusion",
+            "pattern": "[ipv4-addr:value = '188.79.140.239']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2020-01-12T00:00:00Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--58c7587e-f9a9-478d-84a6-eb3d15f27593",
+            "created": "2024-08-24T15:10:19.102578Z",
+            "modified": "2024-08-24T15:10:19.102578Z",
+            "name": "Indicator for Intrusion",
+            "pattern": "[ipv4-addr:value = '158.109.163.21']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2023-10-09T00:00:00Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--6e573de2-6300-411b-a6d2-ff1e18892c4d",
+            "created": "2024-08-24T15:10:19.102578Z",
+            "modified": "2024-08-24T15:10:19.102578Z",
+            "name": "Indicator for Malware",
+            "pattern": "[ipv4-addr:value = '193.113.219.16']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2020-11-10T00:00:00Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--d884c3a6-891a-4979-9707-be3c10e7b344",
+            "created": "2024-08-24T15:10:19.104603Z",
+            "modified": "2024-08-24T15:10:19.104603Z",
+            "name": "Indicator for DDoS",
+            "pattern": "[ipv4-addr:value = '52.8.170.72']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2023-01-13T00:00:00Z"
+        },
+        {
+            "type": "observed-data",
+            "spec_version": "2.1",
+            "id": "observed-data--d529cd41-5545-4515-942c-f8f86b000738",
+            "created": "2024-08-24T15:10:19.096553Z",
+            "modified": "2024-08-24T15:10:19.096553Z",
+            "first_observed": "2021-08-13T00:00:00Z",
+            "last_observed": "2021-08-13T00:00:00Z",
+            "number_observed": 1,
+            "objects": {
+                "ipv4-addr--484f5e6a-5937-5867-8b38-ca15870418e9": {
+                    "type": "ipv4-addr",
+                    "spec_version": "2.1",
+                    "id": "ipv4-addr--484f5e6a-5937-5867-8b38-ca15870418e9",
+                    "value": "154.100.150.171"
+                },
+                "ipv4-addr--debe961c-3f5c-56b9-a63f-b729f1c5f263": {
+                    "type": "ipv4-addr",
+                    "spec_version": "2.1",
+                    "id": "ipv4-addr--debe961c-3f5c-56b9-a63f-b729f1c5f263",
+                    "value": "47101"
+                },
+                "network-traffic--84076f9c-9b1b-587b-ab6e-c8c08e641ebb": {
+                    "type": "network-traffic",
+                    "spec_version": "2.1",
+                    "id": "network-traffic--84076f9c-9b1b-587b-ab6e-c8c08e641ebb",
+                    "src_ref": "ipv4-addr--484f5e6a-5937-5867-8b38-ca15870418e9",
+                    "dst_ref": "ipv4-addr--debe961c-3f5c-56b9-a63f-b729f1c5f263",
+                    "src_port": 10478,
+                    "protocols": [
+                        "213"
+                    ]
+                }
+            }
+        },
+        {
+            "type": "observed-data",
+            "spec_version": "2.1",
+            "id": "observed-data--9c039f06-9c20-49ca-afbb-cce79b51ce2f",
+            "created": "2024-08-24T15:10:19.096553Z",
+            "modified": "2024-08-24T15:10:19.096553Z",
+            "first_observed": "2020-01-12T00:00:00Z",
+            "last_observed": "2020-01-12T00:00:00Z",
+            "number_observed": 1,
+            "objects": {
+                "ipv4-addr--22f93c38-18fd-56af-adad-f3cdb4ef5452": {
+                    "type": "ipv4-addr",
+                    "spec_version": "2.1",
+                    "id": "ipv4-addr--22f93c38-18fd-56af-adad-f3cdb4ef5452",
+                    "value": "188.79.140.239"
+                },
+                "ipv4-addr--8e827f10-b7df-5027-b88c-9f79fefc1e5d": {
+                    "type": "ipv4-addr",
+                    "spec_version": "2.1",
+                    "id": "ipv4-addr--8e827f10-b7df-5027-b88c-9f79fefc1e5d",
+                    "value": "13063"
+                },
+                "network-traffic--7430d391-e9b5-5050-af8f-5e3467178dda": {
+                    "type": "network-traffic",
+                    "spec_version": "2.1",
+                    "id": "network-traffic--7430d391-e9b5-5050-af8f-5e3467178dda",
+                    "src_ref": "ipv4-addr--22f93c38-18fd-56af-adad-f3cdb4ef5452",
+                    "dst_ref": "ipv4-addr--8e827f10-b7df-5027-b88c-9f79fefc1e5d",
+                    "src_port": 20707,
+                    "protocols": [
+                        "1421"
+                    ]
+                }
+            }
+        },
+        {
+            "type": "observed-data",
+            "spec_version": "2.1",
+            "id": "observed-data--58ccefd4-2236-4d57-8728-59415bc94c1f",
+            "created": "2024-08-24T15:10:19.102578Z",
+            "modified": "2024-08-24T15:10:19.102578Z",
+            "first_observed": "2023-10-09T00:00:00Z",
+            "last_observed": "2023-10-09T00:00:00Z",
+            "number_observed": 1,
+            "objects": {
+                "ipv4-addr--05edb2aa-91c5-55e4-b988-b1f94f6c63e5": {
+                    "type": "ipv4-addr",
+                    "spec_version": "2.1",
+                    "id": "ipv4-addr--05edb2aa-91c5-55e4-b988-b1f94f6c63e5",
+                    "value": "158.109.163.21"
+                },
+                "ipv4-addr--8f448ac9-4abe-5b70-b08d-23ec63f49ebf": {
+                    "type": "ipv4-addr",
+                    "spec_version": "2.1",
+                    "id": "ipv4-addr--8f448ac9-4abe-5b70-b08d-23ec63f49ebf",
+                    "value": "8703"
+                },
+                "network-traffic--ff59e625-2e66-59a0-9ec1-2d4c84985d52": {
+                    "type": "network-traffic",
+                    "spec_version": "2.1",
+                    "id": "network-traffic--ff59e625-2e66-59a0-9ec1-2d4c84985d52",
+                    "src_ref": "ipv4-addr--05edb2aa-91c5-55e4-b988-b1f94f6c63e5",
+                    "dst_ref": "ipv4-addr--8f448ac9-4abe-5b70-b08d-23ec63f49ebf",
+                    "src_port": 48709,
+                    "protocols": [
+                        "87"
+                    ]
+                }
+            }
+        },
+        {
+            "type": "observed-data",
+            "spec_version": "2.1",
+            "id": "observed-data--6cf2ccd2-3526-4430-b245-e3f00328d7f0",
+            "created": "2024-08-24T15:10:19.104603Z",
+            "modified": "2024-08-24T15:10:19.104603Z",
+            "first_observed": "2020-11-10T00:00:00Z",
+            "last_observed": "2020-11-10T00:00:00Z",
+            "number_observed": 1,
+            "objects": {
+                "ipv4-addr--440d9131-9565-5e02-a91a-782bd114046d": {
+                    "type": "ipv4-addr",
+                    "spec_version": "2.1",
+                    "id": "ipv4-addr--440d9131-9565-5e02-a91a-782bd114046d",
+                    "value": "193.113.219.16"
+                },
+                "ipv4-addr--71fb298b-1a3c-5436-bda2-f1fd45ba2854": {
+                    "type": "ipv4-addr",
+                    "spec_version": "2.1",
+                    "id": "ipv4-addr--71fb298b-1a3c-5436-bda2-f1fd45ba2854",
+                    "value": "32393"
+                },
+                "network-traffic--0141940d-f611-5046-95cb-4f955294d1d8": {
+                    "type": "network-traffic",
+                    "spec_version": "2.1",
+                    "id": "network-traffic--0141940d-f611-5046-95cb-4f955294d1d8",
+                    "src_ref": "ipv4-addr--440d9131-9565-5e02-a91a-782bd114046d",
+                    "dst_ref": "ipv4-addr--71fb298b-1a3c-5436-bda2-f1fd45ba2854",
+                    "src_port": 65527,
+                    "protocols": [
+                        "452"
+                    ]
+                }
+            }
+        },
+        {
+            "type": "observed-data",
+            "spec_version": "2.1",
+            "id": "observed-data--15d7f1ed-a1fc-4bc0-a572-71649c9fae57",
+            "created": "2024-08-24T15:10:19.104603Z",
+            "modified": "2024-08-24T15:10:19.104603Z",
+            "first_observed": "2023-01-13T00:00:00Z",
+            "last_observed": "2023-01-13T00:00:00Z",
+            "number_observed": 1,
+            "objects": {
+                "ipv4-addr--2209e51d-b2ba-5225-b562-946c3e1e7143": {
+                    "type": "ipv4-addr",
+                    "spec_version": "2.1",
+                    "id": "ipv4-addr--2209e51d-b2ba-5225-b562-946c3e1e7143",
+                    "value": "52.8.170.72"
+                },
+                "ipv4-addr--95bbce48-39ae-5456-a0ed-1f3a539b6a36": {
+                    "type": "ipv4-addr",
+                    "spec_version": "2.1",
+                    "id": "ipv4-addr--95bbce48-39ae-5456-a0ed-1f3a539b6a36",
+                    "value": "11100"
+                },
+                "network-traffic--410c3de4-d879-56ff-9740-ae3582d195ba": {
+                    "type": "network-traffic",
+                    "spec_version": "2.1",
+                    "id": "network-traffic--410c3de4-d879-56ff-9740-ae3582d195ba",
+                    "src_ref": "ipv4-addr--2209e51d-b2ba-5225-b562-946c3e1e7143",
+                    "dst_ref": "ipv4-addr--95bbce48-39ae-5456-a0ed-1f3a539b6a36",
+                    "src_port": 32653,
+                    "protocols": [
+                        "565"
+                    ]
+                }
+            }
+        }
+    ]
+}
